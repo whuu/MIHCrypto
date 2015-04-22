@@ -103,7 +103,7 @@
 {
     NSUInteger rsaSize = (NSUInteger) RSA_size(_rsa);
     NSMutableData *messageData = [NSMutableData dataWithLength:rsaSize];
-    int messageBytesLength = RSA_private_decrypt((int)cipherData.length, cipherData.bytes, messageData.mutableBytes, _rsa, RSA_PKCS1_OAEP_PADDING);
+    int messageBytesLength = RSA_private_decrypt((int)cipherData.length, cipherData.bytes, messageData.mutableBytes, _rsa, RSA_PKCS1_PADDING);
     if (messageBytesLength < 0) {
         if (error) *error = [NSError errorFromOpenSSL];
         return nil;
